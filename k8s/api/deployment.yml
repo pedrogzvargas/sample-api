@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: api-deployment
+  namespace: dev
+  labels:
+    app: sample-api # identifica el deploy y sirve para los filtros
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: api # toma como suyos los pods con este label
+
+  template: # plantilla que crea los pods con esos labels
+    metadata:
+      labels:
+        app: api
+
+    spec:
+      containers:
+        - name: sample-api
+          image: 471112899364.dkr.ecr.us-east-1.amazonaws.com/sample-api:latest
+#          envFrom:
+#            - configMapRef:
+#                name: api-config
+          ports:
+            - containerPort: 8000
