@@ -3,7 +3,7 @@ pipeline {
 
     environment {
     // artifact ID con repo e include del build number
-        ARTIFACT_ID = 'sample-api:${env.BUILD_NUMBER}'
+        ARTIFACT_ID = "sample-api:${BUILD_NUMBER}"
     }
 
     stages {
